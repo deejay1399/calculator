@@ -1,26 +1,67 @@
+:root {
+    --bg-color: #f7f9f9;
+    --calc-bg: #ffffff;
+    --display-bg: #eef3f3;
+
+    --text-color: #00272C;
+
+    --button-bg: #e4eded;
+    --button-hover: #d6e4e4;
+
+    --accent: #E1FF51;
+    --accent-text: #00272C;
+
+    --equals-bg: var(--accent);
+    --equals-hover: #c8e645;
+
+    --border: #d0dcdc;
+}
+
+body.dark {
+    --bg-color: #001a1d;
+    --calc-bg: #00272C;
+    --display-bg: #001f23;
+
+    --text-color: #eaffea;
+
+    --button-bg: #01363c;
+    --button-hover: #014a52;
+
+    --accent: #E1FF51;
+    --accent-text: #00272C;
+
+    --equals-bg: var(--accent);
+    --equals-hover: #c8e645;
+
+    --border: #014a52;
+}
+
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
 }
 
 .calculator{
-    background-color: #2c2c2c;
+    border: 1px solid var(--border);
+    background-color: var(--calc-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 #display{
-    background-color: #1e1e1e;
-    color: #fff;
+    background-color: var(--display-bg);
+    color: var(--text-color);
     font-size: 2em;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 20px;
     text-align: right;
+    border: none;
+    outline: none;
 }
 
 .buttons{
@@ -34,28 +75,40 @@ button{
     font-size: 1.5em;
     border: none;
     border-radius: 5px;
-    background-color: #4caf50;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--text-color);
     cursor: pointer;
     transition: all 0.08s ease;
 }
 
 button:hover{
-    background-color: #45a049;
+    background-color: var(--accent);
+    color: var(--accent-text);
 }
 
 #equals{
-    background-color: #f44336;
+    background-color: var(--equals-bg);
+    color: var(--accent-text);
     grid-column: span 4;
 }
 
 #equals:hover{
-    background-color: #d32f2f;
+    background-color: var(--equals-hover);
 }
 
 button.active {
   transform: scale(0.92);
-  background: #4caf50;
-  color: white;
-  box-shadow: inset 0 3px 6px rgba(0,0,0,0.4);
+  background: var(--accent);
+  color: var(--accent-text);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+#themeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  background: transparent;
 }
