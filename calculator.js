@@ -10,7 +10,13 @@ function clearDisplay(){
 
 function calculate(){
     try{
-        display.value = eval(display.value);
+        const expression = display.value;
+        const result = eval(expression);
+
+        display.value = result;
+
+        addtoHistory(expression, result);
+
     }catch(e){
         display.value = 'Error';
     }
@@ -55,3 +61,27 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = isDark ? "☀️" : "🌙";
 });
 
+let history = [];
+
+function addtoHistory(expression, result){
+    const entry = `${expression} = ${result}`;
+    history.unshift(entry);
+
+    renderHistory();
+}
+
+function renderHistory(){
+    const list = document.getElementById("historylist");
+    list.innerHTML = ""; 
+
+    history.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+
+        li.onclick = () => {
+            display.value = item.split("=")[1];  
+        }
+
+        list.appendChild(li);
+    });
+}
