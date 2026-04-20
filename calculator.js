@@ -63,10 +63,14 @@ toggleBtn.addEventListener("click", () => {
 
 let history = [];
 
+history = JSON.parse(localStorage.getItem("history")) || [];
+renderHistory();
+
 function addtoHistory(expression, result){
     const entry = `${expression} = ${result}`;
     history.unshift(entry);
 
+    localStorage.setItem("history", JSON.stringify(history));
     renderHistory();
 }
 
@@ -85,3 +89,4 @@ function renderHistory(){
         list.appendChild(li);
     });
 }
+
